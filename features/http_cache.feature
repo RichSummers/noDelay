@@ -17,3 +17,15 @@ Feature: HTTP Cache
     Given The website is configured in noDelay
     When I request for update of a resource
     Then the resource must be updated in the cache
+    
+  Scenario: Pages in Sitemap.xml are cached
+    Given the website nodelay.com is configured to use noDelay 
+    And the page index.php is in the sitemap.xml
+    When I visit that page
+    Then it is delivered from noDelay
+    
+  Scenario: Pages not in Sitemap.xml are not cached
+    Given the website nodelay.com is configured to use noDelay 
+    And the page noindex.php is not in the sitemap.xml
+    When I visit that page
+    Then it is not delivered from noDelay
