@@ -16,4 +16,4 @@ Feature: HTTP Cache
   Scenario: Update cache for a resource
     Given The website is configured in noDelay
     When I request for update of a resource
-    Then the resource must be update
+    Then the resource must be updated in the cache
